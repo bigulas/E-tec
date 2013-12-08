@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package DomainModel;
+package domainModel;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -16,13 +16,17 @@ import javax.persistence.Id;
  * @author Paulo
  */
 @Entity
-public class Turma implements Serializable {
+public class Administrador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
+    private String login;
+    @Column(nullable = false)
+    private String senha;
 
     public Long getId() {
         return id;
@@ -40,6 +44,22 @@ public class Turma implements Serializable {
         this.nome = nome;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -50,10 +70,10 @@ public class Turma implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Turma)) {
+        if (!(object instanceof Administrador)) {
             return false;
         }
-        Turma other = (Turma) object;
+        Administrador other = (Administrador) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -62,7 +82,7 @@ public class Turma implements Serializable {
 
     @Override
     public String toString() {
-        return "DataAccess.Turma[ id=" + id + " ]";
+        return "DataAccess.Administrador[ id=" + id + " ]";
     }
     
 }
