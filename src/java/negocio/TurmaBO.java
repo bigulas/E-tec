@@ -8,7 +8,8 @@ import domainModel.Turma;
  * @author arnaldo
  */
 public class TurmaBO {
-    private TurmaDAO turmaDAO = new TurmaDAO();
+
+    private TurmaDAO turmaDao = new TurmaDAO();
     
     public void adicionar(Turma turma){
         if(turma.getNome().trim().length() <=0){
@@ -16,7 +17,11 @@ public class TurmaBO {
         }
         
         //Se tudo der certo, passa para a camada de persistencia
-        turmaDAO.adicionar(turma);
+
+        turmaDao.adicionar(turma);
+
+        turmaDao.adicionar(turma);
+
     }
     
 }
