@@ -8,8 +8,8 @@
     </h:head>
     <h:body>
         <h:form id="teste">
-            Nome: <p:inputText id="txtnome" value="#{}"/>
-            <p:commandButton value="Adicionar" action="#{testeTurmaController.adicionarTurma()}"/>
+            <p:inputText id="txtnome" value="#{testeTurmaController.turma.nome}"/>
+            <p:commandButton value="Adicionar" ajax="false" action="#{testeTurmaController.adicionarTurma()}"/>
         </h:form>
     </h:body>
 </html>

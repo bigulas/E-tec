@@ -5,11 +5,11 @@
  */
 package controller;
 
+import dataAcess.TurmaDAO;
 import domainModel.Turma;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
 import negocio.TurmaBO;
 
 /**
@@ -17,7 +17,6 @@ import negocio.TurmaBO;
  * @author arnaldo
  */
 @Named(value = "testeTurmaController")
-@ManagedBean
 @SessionScoped
 public class TesteTurmaController implements Serializable {
 
@@ -28,12 +27,8 @@ public class TesteTurmaController implements Serializable {
     }
     
     //METODOS
-    public void adicionarTurma(){
-        try{
+    public void adicionarTurma(){          
             turmaBO.adicionar(turma);
-        }catch(Exception e){
-        
-        }
     }
     
     
