@@ -12,8 +12,9 @@
 
 
             <ui:define name="content">
+                <p:growl autoUpdate="true"/>
                 <div align="center">
-                    <h:form>
+                    <h:form id="frmCadastro">
                         <p:panelGrid columns="2">  
                             <f:facet name="header">  
                                 Cadastro de Aluno  
@@ -183,7 +184,7 @@
                             <p:inputText id="cidadeformacao" value="#{cadastroAlunoControler.alunoCadastrar.formacaocidade}" required="true" label="NescissidadeQual"/>
 
                             <f:facet name="footer">  
-                                <p:commandButton type="button" value="Salvar" icon="ui-icon-check" style="margin:0"/>  
+                                <p:commandButton value="Salvar" icon="ui-icon-check" style="margin:0" action="#{cadastroAlunoControler.salvar()}"/>  
                             </f:facet>  
                         </p:panelGrid>  
                     </h:form>
