@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templateInicio.xhtml">
+
+
+            <ui:define name="content">
+                <div align="center">
+                    <h:form>
+                        <p:panelGrid columns="2">  
+                            <f:facet name="header">  
+                                Cadastro de Aluno  
+                            </f:facet>  
+
+                            <h:outputLabel for="nome" value="Nome: *" />  
+                            <p:inputText id="nome" value="#{cadastroAlunoControler.aluno.nome}" label="Nome" />  
+
+                            <h:outputLabel for="cpf" value="Cpf: *" />  
+                            <p:inputText id="cpf" value="" required="true" label="Cpf"/>  
+
+                            <h:outputLabel for="telefonecelular" value="Telefone Celular: *" />  
+                            <p:inputText id="telefonecelular" value="" required="true" label="Telefone Celular"/>
+
+                            <h:outputLabel for="telefonefixo" value="Telefone Fixo: *" />  
+                            <p:inputText id="telefonefixo" value="" required="true" label="Telefone Fixo"/>
+
+                            <h:outputLabel for="modalidade" value="Modalidade: *"/>                        
+                            <p:selectOneMenu id="modalidade" required="true" value="">  
+                                <f:selectItem itemLabel="Concomitante" itemValue="Concomitante"/>  
+                                <f:selectItem itemLabel="Subsequente" itemValue="Subsequente" />  
+                            </p:selectOneMenu>  
+
+                            <h:outputLabel for="email" value="E-mail: *" />  
+                            <p:inputText id="email" value="" required="true" label="E-mail"/>
+                            
+                   
+
+                            <f:facet name="footer">  
+                                <p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/>  
+                            </f:facet>  
+                        </p:panelGrid>  
+                    </h:form>
+                </div>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>
