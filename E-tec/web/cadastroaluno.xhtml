@@ -30,6 +30,12 @@
 
                             <h:outputLabel for="telefonefixo" value="Telefone Fixo: *" />  
                             <p:inputText id="telefonefixo" value="#{cadastroAlunoControler.alunoCadastrar.telfixo}" required="true" label="Telefone Fixo"/>
+                            
+                            <h:outputLabel for="ensinomedio" value="Ensino Medio: *"/>                        
+                            <p:selectOneMenu id="ensinomedio" required="true" value="#{cadastroAlunoControler.alunoCadastrar.ensinomedio}">  
+                                <f:selectItem itemLabel="Publica" itemValue="Publica"/>  
+                                <f:selectItem itemLabel="Particular" itemValue="Particular" />  
+                            </p:selectOneMenu> 
 
                             <h:outputLabel for="modalidade" value="Modalidade: *"/>                        
                             <p:selectOneMenu id="modalidade" required="true" value="#{cadastroAlunoControler.alunoCadastrar.modalidade}">  
@@ -68,9 +74,9 @@
                             <p:inputText id="rgexpedidor" value="#{cadastroAlunoControler.alunoCadastrar.rgexpedicao}" required="true" label="ExpedidorRG"/>
 
                             <h:outputLabel for="dataexpedidor" value="Data expedição RG: *"/>
-                            <p:calendar id="militaremicao" size="10" locale="pt" label="Dataexpedição" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.rgdataexpedicao}"  
+                            <p:calendar id="dataexpedidor" size="10" locale="pt" label="Dataexpedidor" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.rgdataexpedicao}"  
                                         title="DataExpedidor" mindate="01/01/1900" showButtonPanel="true" > 
-                                <p:watermark for="militaremicao" value="dd/mm/aaaa" />       
+                                <p:watermark for="dataexpedidor" value="dd/mm/aaaa" />       
                             </p:calendar>  
 
                             <h:outputLabel for="datanascimento" value="Data de Nascimento: *"/>
@@ -78,38 +84,106 @@
                                         title="DataNascimento" mindate="01/01/1900" showButtonPanel="true" > 
                                 <p:watermark for="datanascimento" value="dd/mm/aaaa" />       
                             </p:calendar>
-                            
+
                             <h:outputLabel for="cidadenascimento" value="Cidade de Origem: *" />  
                             <p:inputText id="cidadenascimento" value="#{cadastroAlunoControler.alunoCadastrar.cidadenascimento}" required="true" label="CidaddeNascimento"/>
-                            
+
                             <h:outputLabel for="estadonascimento" value="Estado de Origem: *" />  
                             <p:inputText id="estadonascimento" value="#{cadastroAlunoControler.alunoCadastrar.estadonascimento}" required="true" label="EstadoNascimento"/>
-                            
+
                             <h:outputLabel for="sexo" value="Sexo: *"/>                        
                             <p:selectOneMenu id="sexo" required="true" value="#{cadastroAlunoControler.alunoCadastrar.sexo}">  
                                 <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>  
                                 <f:selectItem itemLabel="Feminino" itemValue="Feminino" />  
                             </p:selectOneMenu> 
-                            
+
                             <h:outputLabel for="nomepai" value="Nome do Pai: *" />  
                             <p:inputText id="nomepai" value="#{cadastroAlunoControler.alunoCadastrar.nomepai}" required="true" label="NomoPai"/>
-                            
+
                             <h:outputLabel for="nomemae" value="Nome do Mãe: *" />  
                             <p:inputText id="nomemae" value="#{cadastroAlunoControler.alunoCadastrar.nomemae}" required="true" label="NomoMae"/>
+
+                            <h:outputLabel for="estadocivil" value="Estado Civil: *" />  
+                            <p:inputText id="estadocivil" value="#{cadastroAlunoControler.alunoCadastrar.estadocivil}" required="true" label="EstadoCivil"/>
+
+                            <h:outputLabel for="tipocertidao" value="Tipo da Certidão: *"/>                        
+                            <p:selectOneMenu id="tipocertidao" required="true" value="#{cadastroAlunoControler.alunoCadastrar.tipocertidao}">  
+                                <f:selectItem itemLabel="Casamento" itemValue="Casamento"/>  
+                                <f:selectItem itemLabel="Nascimento" itemValue="Nascimento" />  
+                            </p:selectOneMenu>
                             
+                            <h:outputLabel for="numerocertidao" value="Numero da Certidão: *" />  
+                            <p:inputText id="numerocertidao" value="#{cadastroAlunoControler.alunoCadastrar.numcertidao}" required="true" label="numerocaertidao"/>
                             
+                            <h:outputLabel for="nomecartorio" value="Nome do Cartorio: *" />  
+                            <p:inputText id="nomecartorio" value="#{cadastroAlunoControler.alunoCadastrar.nomecartorio}" required="true" label="NomeCartorio"/>
                             
+                            <h:outputLabel for="dataexpedicao" value="Data de Expedição: *"/>
+                            <p:calendar id="dataexpedicao" size="10" locale="pt" label="DataExpedicao" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.dataexpedicao}"  
+                                        title="DataNascimento" mindate="01/01/1900" showButtonPanel="true" > 
+                                <p:watermark for="dataexpedicao" value="dd/mm/aaaa" />       
+                            </p:calendar>
                             
-
-
-
-
-
-
-
-
+                            <h:outputLabel for="folhacertidao" value="Folha da Certidão: *" />  
+                            <p:inputText id="folhacertidao" value="#{cadastroAlunoControler.alunoCadastrar.folhacertidao}" required="true" label="FolhaCertidao"/>
+                            
+                            <h:outputLabel for="livrocertidao" value="Livro da Certidão: *" />  
+                            <p:inputText id="livrocertidao" value="#{cadastroAlunoControler.alunoCadastrar.livrocertidao}" required="true" label="LivorCertidao"/>
+                            
+                            <h:outputLabel for="trabalha" value="Trabalha: *"/>                        
+                            <p:selectOneMenu id="trabalha" required="true" value="#{cadastroAlunoControler.alunoCadastrar.trabalha}">  
+                                <f:selectItem itemLabel="Sim" itemValue="Sim"/>  
+                                <f:selectItem itemLabel="Não" itemValue="Não"/>  
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel for="profissao" value="Profissão: *" />  
+                            <p:inputText id="profissao" value="#{cadastroAlunoControler.alunoCadastrar.proficao}" required="true" label="Profissao"/>
+                            
+                            <h:outputLabel for="qtdpessoas" value="Quantidade de Pessoas na Residencia: *" />  
+                            <p:inputText id="qtdpessoas" value="#{cadastroAlunoControler.alunoCadastrar.qtdpessoafamilia}" required="true" label="QtddePessoas"/>
+                            
+                            <h:outputLabel for="rendafamiliar" value="Renda Familiar: *" />  
+                            <p:inputText id="rendafamiliar" value="#{cadastroAlunoControler.alunoCadastrar.rendafamiliar}" required="true" label="RendaFamiliar"/>
+                            
+                            <h:outputLabel for="etinia" value="Etinia: *"/>                        
+                            <p:selectOneMenu id="etinia" required="true" value="#{cadastroAlunoControler.alunoCadastrar.etinia}">  
+                                <f:selectItem itemLabel="Branco" itemValue="Branco"/>  
+                                <f:selectItem itemLabel="Prado" itemValue="Prado" /> 
+                                <f:selectItem itemLabel="Amarelo" itemValue="Amarelo" />
+                                <f:selectItem itemLabel="Negro" itemValue="Negro" />
+                                <f:selectItem itemLabel="Indigena" itemValue="Indigena" />
+                            </p:selectOneMenu>
+                            
+                             <h:outputLabel for="nescesidade" value="Possui Nescessidade Especial: *"/>                        
+                             <p:selectOneMenu id="necessidade" required="true" value="#{cadastroAlunoControler.alunoCadastrar.necessidade}">  
+                                <f:selectItem itemLabel="Sim" itemValue="Sim"/>  
+                                <f:selectItem itemLabel="Não" itemValue="Não"/>  
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel for="nescessidadequal" value="Qual Nescessidade Especial: *" />  
+                            <p:inputText id="nescessidadequal" value="#{cadastroAlunoControler.alunoCadastrar.necessidadequal}" required="true" label="NescissidadeQual"/>
+                            
+                            <h:outputLabel for="formacaoprevia" value="Qual a Sua Formação: *"/>                        
+                            <p:selectOneMenu id="formacaoprevia" required="true" value="#{cadastroAlunoControler.alunoCadastrar.formacaoprevia}">  
+                                <f:selectItem itemLabel="Ensino Médio em Curso" itemValue="Ensino Médio em Curso"/>  
+                                <f:selectItem itemLabel="Ensino Médio Concluido" itemValue="Ensino Médio Concluido"/> 
+                                <f:selectItem itemLabel="Superior Incompleto" itemValue="Superior Incompleto"/>
+                                <f:selectItem itemLabel="Superior Completo" itemValue="Superior Completo"/>
+                                <f:selectItem itemLabel="Pós Graduado" itemValue="Pós Graduado"/>
+                            </p:selectOneMenu>
+                            
+                             <h:outputLabel for="nomeinstituicao" value="Nome da Escola: *" />  
+                             <p:inputText id="nomeinstituicao" value="#{cadastroAlunoControler.alunoCadastrar.formacaoinstituicao}" required="true" label="Nome Instituicao"/>
+                            
+                             
+                              <h:outputLabel for="anoconclusao" value="Ano de Coclusão: *" />  
+                              <p:inputText id="anoconclusao" value="#{cadastroAlunoControler.alunoCadastrar.formacaoano}" required="true" label="AnoFormacao"/>
+                              
+                               <h:outputLabel for="cidadeformacao" value="Cidade em que Conclusão: *" />  
+                               <p:inputText id="cidadeformacao" value="#{cadastroAlunoControler.alunoCadastrar.formacaocidade}" required="true" label="NescissidadeQual"/>
+            
                             <f:facet name="footer">  
-                                <p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/>  
+                                <p:commandButton type="button" value="Salvar" icon="ui-icon-check" style="margin:0"/>  
                             </f:facet>  
                         </p:panelGrid>  
                     </h:form>

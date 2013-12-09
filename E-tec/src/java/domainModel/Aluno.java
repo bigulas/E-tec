@@ -64,7 +64,7 @@ public class Aluno implements Serializable {
     private String folhacertidao;
     private String livrocertidao;
     private String trabalha;
-    private String proficao;
+    private String profissao;
     private String qtdpessoafamilia;
     private String rendafamiliar;
     private String etinia;
@@ -72,7 +72,7 @@ public class Aluno implements Serializable {
     private String necessidadequal;
     private String formacaoprevia;
     private String formacaoinstituicao;
-    private String formacaoano;
+    private int formacaoano;
     private String formacaocidade;
 
     public Long getId() {
@@ -332,11 +332,11 @@ public class Aluno implements Serializable {
     }
 
     public String getProficao() {
-        return proficao;
+        return profissao;
     }
 
     public void setProficao(String proficao) {
-        this.proficao = proficao;
+        this.profissao = proficao;
     }
 
     public String getQtdpessoafamilia() {
@@ -395,11 +395,11 @@ public class Aluno implements Serializable {
         this.formacaoinstituicao = formacaoinstituicao;
     }
 
-    public String getFormacaoano() {
+    public int getFormacaoano() {
         return formacaoano;
     }
 
-    public void setFormacaoano(String formacaoano) {
+    public void setFormacaoano(int formacaoano) {
         this.formacaoano = formacaoano;
     }
 
