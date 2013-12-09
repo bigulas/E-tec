@@ -5,6 +5,12 @@
     <jta-data-source>E-tec</jta-data-source>
     <class>domainModel.Turma</class>
     <class>domainModel.Especialidade</class>
+    <class>domainModel.Aluno</class>
+    <class>domainModel.Administrador</class>
+    <class>domainModel.Curso</class>
+    <class>domainModel.Endereco</class>
+    <class>domainModel.Polo</class>
+    <class>domainModel.Tutor</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
