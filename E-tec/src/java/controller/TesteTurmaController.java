@@ -14,7 +14,7 @@ import negocio.TurmaBO;
 
 /**
  *
- * @author arnaldo
+ * @author Paulo
  */
 @Named(value = "testeTurmaController")
 @SessionScoped

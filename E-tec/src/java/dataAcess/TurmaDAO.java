@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author arnaldo
+ * @author Paulo
  */
 public class TurmaDAO {
     EntityManager ge = GerenciadorEntidade.getGerenciadorEntidade();

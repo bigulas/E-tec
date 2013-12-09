@@ -5,7 +5,7 @@ import domainModel.Turma;
 
 /**
  *
- * @author arnaldo
+ * @author Paulo
  */
 public class TurmaBO {
 
