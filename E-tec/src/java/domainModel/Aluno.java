@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -28,52 +29,88 @@ public class Aluno implements Serializable {
     private int numatricula;
     @Column(nullable = false)
     private String nome;
-    @Column(length = 12)
+    @Column
     private String cpf;
+    @Column
     private String telcelular;
+    @Column
     private String telfixo;
     @Column(nullable = false)
-    private String encinomedio;
+    private String ensinomedio;
     @Column(nullable = false)
     private String modalidade;
+    @Column
     private String email;
+    @Column
     private String titulonumero;
+    @Column
     private String titulozona;
+    @Column
     private String titulosecao;
+    @Column
     private String titulocidade;
+    @Column
     private String militarnumero;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date militardataemicao;
+    @Column
     private String rgnumero;
+    @Column
     private String rgexpedicao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date rgdataexpedicao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datanascimento;
+    @Column
     private String cidadenascimento;
+    @Column
     private String estadonascimento;
+    @Column
     private String sexo;
+    @Column
     private String nomepai;
+    @Column
     private String nomemae;
+    @Column
     private String estadocivil;
+    @Column
     private String tipocertidao;
+    @Column
     private String numcertidao;
+    @Column
     private String nomecartorio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataexpedicao;
+    @Column
     private String folhacertidao;
+    @Column
     private String livrocertidao;
+    @Column
     private String trabalha;
+    @Column
     private String profissao;
+    @Column
     private String qtdpessoafamilia;
+    @Column
     private String rendafamiliar;
+    @Column
     private String etinia;
+    @Column
     private String necessidade;
+    @Column
     private String necessidadequal;
+    @Column
     private String formacaoprevia;
+    @Column
     private String formacaoinstituicao;
+    @Column
     private int formacaoano;
+
+    @Column
+
     private String formacaocidade;
+    @OneToOne
+    private Endereco endereco;
 
     public Long getId() {
         return id;
@@ -124,11 +161,11 @@ public class Aluno implements Serializable {
     }
 
     public String getEncinomedio() {
-        return encinomedio;
+        return ensinomedio;
     }
 
-    public void setEncinomedio(String encinomedio) {
-        this.encinomedio = encinomedio;
+    public void setEncinomedio(String ensinomedio) {
+        this.ensinomedio = ensinomedio;
     }
 
     public String getModalidade() {
@@ -409,6 +446,14 @@ public class Aluno implements Serializable {
 
     public void setFormacaocidade(String formacaocidade) {
         this.formacaocidade = formacaocidade;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
