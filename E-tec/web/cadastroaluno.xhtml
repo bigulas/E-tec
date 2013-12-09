@@ -184,7 +184,7 @@
                             <p:inputText id="cidadeformacao" value="#{cadastroAlunoControler.alunoCadastrar.formacaocidade}" required="true" label="NescissidadeQual"/>
 
                             <f:facet name="footer">  
-                                <p:commandButton value="Salvar" icon="ui-icon-check" style="margin:0" action="#{cadastroAlunoControler.salvar()}"/>  
+                                <p:commandButton value="Salvar" icon="ui-icon-check" ajax="false" action="#{cadastroAlunoControler.salvar()}"/>  
                             </f:facet>  
                         </p:panelGrid>  
                     </h:form>

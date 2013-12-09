@@ -9,7 +9,7 @@ import domainModel.Aluno;
 import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import negocio.AlunoBO;
 
@@ -18,10 +18,10 @@ import negocio.AlunoBO;
  * @author Paulo
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class CadastroAlunoControler {
 
-    private Aluno alunoCadastrar;
+    private Aluno alunoCadastrar = new Aluno();
     private AlunoBO alunoBO = new AlunoBO();
 
     public CadastroAlunoControler() {
@@ -30,7 +30,7 @@ public class CadastroAlunoControler {
     //MEUS METODOS
     public void iniciarTela() throws IOException {
         this.alunoCadastrar = new Aluno();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/cadastroaluno.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("cadastroaluno.xhtml");
     }
 
     public void mensagemSucesso(String msg) {
@@ -50,6 +50,7 @@ public class CadastroAlunoControler {
         try {
             alunoBO.adicionar(alunoCadastrar);
             mensagemSucesso("Cadastrado com Sucesso!");
+            
         } catch (Exception e) {
             mensagemErro(e.getMessage());
         }
