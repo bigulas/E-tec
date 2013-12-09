@@ -21,9 +21,9 @@ public class AlunoBO {
         if (aluno.getCpf().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
-        if (aluno.getDatanascimento().trim().length() <= 0) {
+       /* if (aluno.getDatanascimento().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
-        }
+        }*/
         if (aluno.getEmail().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }

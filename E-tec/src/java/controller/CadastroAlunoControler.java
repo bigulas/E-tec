@@ -18,19 +18,22 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CadastroAlunoControler {
 
- private Aluno aluno;
+ private Aluno alunoCadastrar;
 
     public CadastroAlunoControler() {
     }
     
-    //SETRS
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
+    
     
     //GETRS
-    public Aluno getAluno() {
-        return aluno;
+    public Aluno getAlunoCadastrar() {
+        return alunoCadastrar;
     }
+
+    //SETRS
+    public void setAlunoCadastrar(Aluno alunoCadastrar) {
+        this.alunoCadastrar = alunoCadastrar;
+    }
+    
     
 }

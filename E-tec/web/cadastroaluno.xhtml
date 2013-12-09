@@ -20,27 +20,93 @@
                             </f:facet>  
 
                             <h:outputLabel for="nome" value="Nome: *" />  
-                            <p:inputText id="nome" value="#{cadastroAlunoControler.aluno.nome}" label="Nome" />  
+                            <p:inputText id="nome" value="#{cadastroAlunoControler.alunoCadastrar.nome}" label="Nome" />  
 
                             <h:outputLabel for="cpf" value="Cpf: *" />  
-                            <p:inputText id="cpf" value="" required="true" label="Cpf"/>  
+                            <p:inputText id="cpf" value="#{cadastroAlunoControler.alunoCadastrar.cpf}" required="true" label="Cpf"/>  
 
                             <h:outputLabel for="telefonecelular" value="Telefone Celular: *" />  
-                            <p:inputText id="telefonecelular" value="" required="true" label="Telefone Celular"/>
+                            <p:inputText id="telefonecelular" value="#{cadastroAlunoControler.alunoCadastrar.telcelular}" required="true" label="Telefone Celular"/>
 
                             <h:outputLabel for="telefonefixo" value="Telefone Fixo: *" />  
-                            <p:inputText id="telefonefixo" value="" required="true" label="Telefone Fixo"/>
+                            <p:inputText id="telefonefixo" value="#{cadastroAlunoControler.alunoCadastrar.telfixo}" required="true" label="Telefone Fixo"/>
 
                             <h:outputLabel for="modalidade" value="Modalidade: *"/>                        
-                            <p:selectOneMenu id="modalidade" required="true" value="">  
+                            <p:selectOneMenu id="modalidade" required="true" value="#{cadastroAlunoControler.alunoCadastrar.modalidade}">  
                                 <f:selectItem itemLabel="Concomitante" itemValue="Concomitante"/>  
                                 <f:selectItem itemLabel="Subsequente" itemValue="Subsequente" />  
                             </p:selectOneMenu>  
 
                             <h:outputLabel for="email" value="E-mail: *" />  
-                            <p:inputText id="email" value="" required="true" label="E-mail"/>
+                            <p:inputText id="email" value="#{cadastroAlunoControler.alunoCadastrar.email}" required="true" label="E-mail"/>
+
+                            <h:outputLabel for="titulonumero" value="Numero do Titulo: *" />  
+                            <p:inputText id="titulonumero" value="#{cadastroAlunoControler.alunoCadastrar.titulonumero}" required="true" label="Numero do Titulo"/>
+
+                            <h:outputLabel for="titulozona" value="Zona do Titulo: *" />  
+                            <p:inputText id="titulozona" value="#{cadastroAlunoControler.alunoCadastrar.titulozona}" required="true" label="Zona do Titulo"/>
+
+                            <h:outputLabel for="titulosecao" value="Seção do Titulo: *" />  
+                            <p:inputText id="titulisecao" value="#{cadastroAlunoControler.alunoCadastrar.titulosecao}" required="true" label="Seção do Titulo"/>
+
+                            <h:outputLabel for="titulocidade" value="Cidade do Titulo: *" />  
+                            <p:inputText id="titulocidade" value="#{cadastroAlunoControler.alunoCadastrar.titulocidade}" required="true" label="Cidade do Titulo"/>
+
+                            <h:outputLabel for="militarnumero" value="Mumero do Certificado Militar: *" />  
+                            <p:inputText id="militarnumero" value="#{cadastroAlunoControler.alunoCadastrar.militarnumero}" required="true" label="Numero do Certificado Militar"/>
+
+                            <h:outputLabel for="militaremicao" value="Data de Emicão do Certificado Miliitar: *"/>
+                            <p:calendar id="militaremicao" size="10" locale="pt" label="DataCertificadoMiliitar" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.militardataemicao}"  
+                                        title="Data de Emição" mindate="01/01/1900" showButtonPanel="true" > 
+                                <p:watermark for="militaremicao" value="dd/mm/aaaa" />       
+                            </p:calendar>                     
+
+                            <h:outputLabel for="rgnumero" value="Numero do RG: *" />  
+                            <p:inputText id="rgnumero" value="#{cadastroAlunoControler.alunoCadastrar.rgnumero}" required="true" label="NumeroRG"/>
+
+                            <h:outputLabel for="rgexpedidor" value="Orgão Expedidor do RG: *" />  
+                            <p:inputText id="rgexpedidor" value="#{cadastroAlunoControler.alunoCadastrar.rgexpedicao}" required="true" label="ExpedidorRG"/>
+
+                            <h:outputLabel for="dataexpedidor" value="Data expedição RG: *"/>
+                            <p:calendar id="militaremicao" size="10" locale="pt" label="Dataexpedição" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.rgdataexpedicao}"  
+                                        title="DataExpedidor" mindate="01/01/1900" showButtonPanel="true" > 
+                                <p:watermark for="militaremicao" value="dd/mm/aaaa" />       
+                            </p:calendar>  
+
+                            <h:outputLabel for="datanascimento" value="Data de Nascimento: *"/>
+                            <p:calendar id="datanascimento" size="10" locale="pt" label="DataNascimento" pattern="dd/MM/yyyy" required="true" value="#{cadastroAlunoControler.alunoCadastrar.datanascimento}"  
+                                        title="DataNascimento" mindate="01/01/1900" showButtonPanel="true" > 
+                                <p:watermark for="datanascimento" value="dd/mm/aaaa" />       
+                            </p:calendar>
                             
-                   
+                            <h:outputLabel for="cidadenascimento" value="Cidade de Origem: *" />  
+                            <p:inputText id="cidadenascimento" value="#{cadastroAlunoControler.alunoCadastrar.cidadenascimento}" required="true" label="CidaddeNascimento"/>
+                            
+                            <h:outputLabel for="estadonascimento" value="Estado de Origem: *" />  
+                            <p:inputText id="estadonascimento" value="#{cadastroAlunoControler.alunoCadastrar.estadonascimento}" required="true" label="EstadoNascimento"/>
+                            
+                            <h:outputLabel for="sexo" value="Sexo: *"/>                        
+                            <p:selectOneMenu id="sexo" required="true" value="#{cadastroAlunoControler.alunoCadastrar.sexo}">  
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>  
+                                <f:selectItem itemLabel="Feminino" itemValue="Feminino" />  
+                            </p:selectOneMenu> 
+                            
+                            <h:outputLabel for="nomepai" value="Nome do Pai: *" />  
+                            <p:inputText id="nomepai" value="#{cadastroAlunoControler.alunoCadastrar.nomepai}" required="true" label="NomoPai"/>
+                            
+                            <h:outputLabel for="nomemae" value="Nome do Mãe: *" />  
+                            <p:inputText id="nomemae" value="#{cadastroAlunoControler.alunoCadastrar.nomemae}" required="true" label="NomoMae"/>
+                            
+                            
+                            
+                            
+
+
+
+
+
+
+
 
                             <f:facet name="footer">  
                                 <p:commandButton type="button" value="Save" icon="ui-icon-check" style="margin:0"/>  

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Aluno implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +42,14 @@ public class Aluno implements Serializable {
     private String titulosecao;
     private String titulocidade;
     private String militarnumero;
-    private String militardataemicao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date militardataemicao;
     private String rgnumero;
     private String rgexpedicao;
-    private String datanascimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date rgdataexpedicao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date datanascimento;
     private String cidadenascimento;
     private String estadonascimento;
     private String sexo;
@@ -53,7 +59,8 @@ public class Aluno implements Serializable {
     private String tipocertidao;
     private String numcertidao;
     private String nomecartorio;
-    private String dataexpedicao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataexpedicao;
     private String folhacertidao;
     private String livrocertidao;
     private String trabalha;
@@ -67,7 +74,6 @@ public class Aluno implements Serializable {
     private String formacaoinstituicao;
     private String formacaoano;
     private String formacaocidade;
-    
 
     public Long getId() {
         return id;
@@ -181,11 +187,11 @@ public class Aluno implements Serializable {
         this.militarnumero = militarnumero;
     }
 
-    public String getMilitardataemicao() {
+    public Date getMilitardataemicao() {
         return militardataemicao;
     }
 
-    public void setMilitardataemicao(String militardataemicao) {
+    public void setMilitardataemicao(Date militardataemicao) {
         this.militardataemicao = militardataemicao;
     }
 
@@ -205,11 +211,19 @@ public class Aluno implements Serializable {
         this.rgexpedicao = rgexpedicao;
     }
 
-    public String getDatanascimento() {
+    public Date getRgdataexpedicao() {
+        return rgdataexpedicao;
+    }
+
+    public void setRgdataexpedicao(Date rgdataexpedicao) {
+        this.rgdataexpedicao = rgdataexpedicao;
+    }
+
+    public Date getDatanascimento() {
         return datanascimento;
     }
 
-    public void setDatanascimento(String datanascimento) {
+    public void setDatanascimento(Date datanascimento) {
         this.datanascimento = datanascimento;
     }
 
@@ -285,11 +299,11 @@ public class Aluno implements Serializable {
         this.nomecartorio = nomecartorio;
     }
 
-    public String getDataexpedicao() {
+    public Date getDataexpedicao() {
         return dataexpedicao;
     }
 
-    public void setDataexpedicao(String dataexpedicao) {
+    public void setDataexpedicao(Date dataexpedicao) {
         this.dataexpedicao = dataexpedicao;
     }
 
@@ -421,5 +435,5 @@ public class Aluno implements Serializable {
     public String toString() {
         return "DataAccess.Aluno[ id=" + id + " ]";
     }
-    
+
 }
