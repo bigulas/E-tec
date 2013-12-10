@@ -20,7 +20,7 @@ public class TutorBO {
         if (tutor.getCelular().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
-        if (tutor.getCidade().trim().length() <= 0) {
+        if (tutor.getCidade().trim().isEmpty()) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
         if (tutor.getCpf().trim().length() <= 0) {

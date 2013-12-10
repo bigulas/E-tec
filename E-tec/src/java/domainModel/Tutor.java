@@ -23,12 +23,17 @@ public class Tutor implements Serializable {
     private Long id;
     @Column(nullable = false)
     private String nome;
+    @Column
     private String cpf;
+    @Column
     private String rg;
     @Column(nullable = false)
     private String celular;
+    @Column
     private String telfixo;
+    @Column
     private String endereco;
+    @Column
     private String cidade;
     @Column(nullable = false)
     private String email;
