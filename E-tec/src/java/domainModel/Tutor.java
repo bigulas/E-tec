@@ -35,7 +35,7 @@ public class Tutor implements Serializable {
     private String endereco;
     @Column
     private String cidade;
-    @Column(nullable = false)
+    @Column
     private String email;
     @Column(nullable = false)
     private String login;
