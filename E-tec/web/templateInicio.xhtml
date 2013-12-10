@@ -17,29 +17,7 @@
 
         <div id="top">
             <ui:insert name="top">
-                <!--*************** LOGIN *****************************-->
-                <div id="login" align="left">
-                    <h:form id="formLogin">
-                        <p:panelGrid id="pnlLogin" columns="2" styleClass="semBorda">
-                            <f:facet name="header">
-                                <h:outputText value="Login"/>
-                            </f:facet>
-
-                            <h:outputLabel for="txtEmailLogin" value="E-Mail " />
-                            <p:inputText id="txtEmailLogin" label="E-Mail" title="E-Mail" value="#{inicioController.email}"
-                                         onkeyup="this.value = this.value.toLowerCase();
-                                                 this.value = this.value.trim();"/>
-
-                            <h:outputLabel for="txtSenhaLogin" value="Senha " />
-                            <p:password id="txtSenhaLogin" label="Senha" title="Senha" maxlength="14" value="#{inicioController.senha}"/>
-
-                            <f:facet name="footer">
-                                <p:commandButton value="Entrar" title="Entrar" action="#{inicioController.logar}" />              
-                            </f:facet>
-                        </p:panelGrid>
-                    </h:form>
-                </div>
-
+  
             </ui:insert>
         </div>
 

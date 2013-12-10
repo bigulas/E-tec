@@ -50,7 +50,7 @@ public class CadastroAlunoControler {
         try {
             alunoBO.adicionar(alunoCadastrar);
             mensagemSucesso("Cadastrado com Sucesso!");
-            
+            FacesContext.getCurrentInstance().getExternalContext().redirect("sucesso.xhtml");       
         } catch (Exception e) {
             mensagemErro(e.getMessage());
         }
