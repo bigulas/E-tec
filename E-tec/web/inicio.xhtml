@@ -18,14 +18,14 @@
                                 Login  
                             </f:facet> 
                             <h:outputLabel for="login" value="Login: " />  
-                            <p:inputText id="login" value="" required="true" label="Login" /> 
+                            <p:inputText id="login" label="Login" /> 
 
                             <h:outputLabel for="senha" value="Senha: " />  
-                            <p:inputText id="senha" value="" required="true" label="Senha" />  
+                            <p:inputText id="senha" label="Senha" />  
 
                             <f:facet name="footer" > 
                                 <div align="center">
-                                    <p:commandButton id="btnlogin"  value="Login"/>
+                                    <p:commandButton id="btnlogin"  value="Login" ajax="false" action="#{principalController.iniciarTela()}"/>
                                 </div>
                             </f:facet> 
 
