@@ -52,16 +52,10 @@ public class TutorBO {
         if (tutor.getCelular().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
-        if (tutor.getCidade().trim().length() <= 0) {
-            throw new RuntimeException("O nome não pode ser vazio.");
-        }
         if (tutor.getCpf().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
         if (tutor.getEmail().trim().length() <= 0) {
-            throw new RuntimeException("O nome não pode ser vazio.");
-        }
-        if (tutor.getEndereco().trim().length() <= 0) {
             throw new RuntimeException("O nome não pode ser vazio.");
         }
         if (tutor.getLogin().trim().length() <= 0) {

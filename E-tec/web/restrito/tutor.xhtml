@@ -183,7 +183,7 @@
 
                     <!--..................Formulario/Dialog Alterar Tutor..........................-->
                     <p:dialog id="dlgAltTutor" header="Alterar Tutor" closable="false" 
-                              modal="true" resizable="false" widgetVar="altTutor">                             
+                              modal="true" resizable="false" widgetVar="altTutor" dynamic="false">                             
 
                         <h:form id="frmAltTutor">
                             <h:panelGrid columns="2">
@@ -243,10 +243,9 @@
                                     <p:watermark for="txtSenha" value="Digite o Senha da tutor" />
                                 </p:inputText>
 
-                                <p:commandLink id="btnAlterar" value="Alterar"  
-                                                 update=":formTutores:tutores,:dlgAltTutor" 
-                                                 actionListener="#{tutorController.alterarTutor()}"/>
-                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="altTutor.hide();"/>
+                                <p:commandLink id="btnAlterar" value="Alterar" update=":formTutores:tutores,:dlgAltTutor"
+                                               actionListener="#{tutorController.alterarTutor()}"  ajax="false" onsuccess="altTutor.hide();"/>
+                                <p:commandLink id="btnCancelar2" value="Cancelar" type="reset" immediate="true" onclick="altTutor.hide();"/>
                             </h:panelGrid>
                         </h:form>
                     </p:dialog>
