@@ -114,7 +114,7 @@
 
                     <!--..................Formulario/Dialog Adicionar Tutor........................-->
                     <p:dialog id="dlgAddTutor" header="Adicionar Tutor" closable="false" 
-                              modal="true" resizable="false" widgetVar="addTutor" dynamic="true">                             
+                              modal="true" resizable="false" widgetVar="addTutor" dynamic="false">                             
 
                         <h:form id="frmAddTutor">
                             <h:panelGrid columns="2">
@@ -122,21 +122,21 @@
                                 <p:inputText value="#{tutorController.novoTutor.nome}" id="txtNome" 
                                              maxlength="25" required="true" label="nome"
                                              alt="Nome da Tutor" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtNome" value="Digite o nome da tutor" />
+                                    <p:watermark for="txtNome" value="Digite o nome do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="CPF: " for="txtCPF"/>
                                 <p:inputText value="#{tutorController.novoTutor.cpf}" id="txtCPF" 
                                              maxlength="12" required="true" label="cpf"
                                              alt="CPF do Tutor" requiredMessage="O campo CPF é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtCPF" value="Digite o cpf da tutor" />
+                                    <p:watermark for="txtCPF" value="Digite o cpf do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="RG: " for="txtRG"/>
                                 <p:inputText value="#{tutorController.novoTutor.rg}" id="txtRG" 
                                              maxlength="12" required="true" label="cpf"
                                              alt="RG do Tutor" requiredMessage="O campo RG é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtRG" value="Digite o rg doa tutor" />
+                                    <p:watermark for="txtRG" value="Digite o rg do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="Celular: " for="txtCelular"/>
@@ -150,40 +150,40 @@
                                 <p:inputText value="#{tutorController.novoTutor.telfixo}" id="txtTelFixo" 
                                              maxlength="12" required="true" label="cpf"
                                              alt="TelFixo do Tutor" requiredMessage="O campo TelFixo é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtTelFixo" value="Digite o TelFixo da tutor" />
+                                    <p:watermark for="txtTelFixo" value="Digite o TelFixo do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="Email: " for="txtEmail"/>
                                 <p:inputText value="#{tutorController.novoTutor.email}" id="txtEmail" 
-                                             maxlength="12" required="true" label="cpf"
+                                             maxlength="30" required="true" label="cpf"
                                              alt="Email do Tutor" requiredMessage="O campo Email é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtEmail" value="Digite o Email da tutor" />
+                                    <p:watermark for="txtEmail" value="Digite o Email do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="Login: " for="txtLogin"/>
                                 <p:inputText value="#{tutorController.novoTutor.login}" id="txtLogin" 
-                                             maxlength="12" required="true" label="cpf"
+                                             maxlength="25" required="true" label="cpf"
                                              alt="Login do Tutor" requiredMessage="O campo Login é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtLogin" value="Digite o Login da tutor" />
+                                    <p:watermark for="txtLogin" value="Digite o Login do tutor" />
                                 </p:inputText>
 
                                 <h:outputLabel value="Senha: " for="txtSenha"/>
                                 <p:inputText value="#{tutorController.novoTutor.senha}" id="txtSenha" 
-                                             maxlength="12" required="true" label="cpf"
+                                             maxlength="30" required="true" label="cpf"
                                              alt="Senha do Tutor" requiredMessage="O campo Senha é de preenchimento obrigatorio." >
-                                    <p:watermark for="txtSenha" value="Digite o Senha da tutor" />
+                                    <p:watermark for="txtSenha" value="Digite o Senha do tutor" />
                                 </p:inputText>
 
-                                <p:commandButton id="btnAdicionar" value="Adicionar" update=":formTutores:tutores,:dlgAddTutor"
-                                                 actionListener="#{tutorController.adicionarTutor()}" onsuccess="addTutor.hide();"/>
-                                <p:commandButton id="btnCancelar" value="Cancelar" type="reset" onclick="addTutor.hide();"/>
+                                <p:commandLink id="btnAdicionar" value="Adicionar" update=":formTutores:tutores,:dlgAddTutor"
+                                               actionListener="#{tutorController.adicionarTutor()}" ajax="false" onsuccess="addTutor.hide();"/>
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="addTutor.hide();"/>
                             </h:panelGrid>
                         </h:form>
                     </p:dialog>
 
                     <!--..................Formulario/Dialog Alterar Tutor..........................-->
                     <p:dialog id="dlgAltTutor" header="Alterar Tutor" closable="false" 
-                              modal="true" resizable="false" widgetVar="altTutor" dynamic="true">                             
+                              modal="true" resizable="false" widgetVar="altTutor">                             
 
                         <h:form id="frmAltTutor">
                             <h:panelGrid columns="2">
@@ -243,9 +243,10 @@
                                     <p:watermark for="txtSenha" value="Digite o Senha da tutor" />
                                 </p:inputText>
 
-                                <p:commandButton id="btnAlterar" value="Alterar"  
-                                                 oncomplete="altTutor.hide();" update=":formTutores:tutores" actionListener="#{tutorController.alterarTutor()}"/>
-                                <p:commandButton id="btnCancelar" value="Cancelar" type="reset" onclick="altTutor.hide();"/>
+                                <p:commandLink id="btnAlterar" value="Alterar"  
+                                                 update=":formTutores:tutores,:dlgAltTutor" 
+                                                 actionListener="#{tutorController.alterarTutor()}"/>
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="altTutor.hide();"/>
                             </h:panelGrid>
                         </h:form>
                     </p:dialog>

@@ -6,8 +6,10 @@
 
 package controller;
 
+import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -21,6 +23,10 @@ public class principalController {
      * Creates a new instance of principalController
      */
     public principalController() {
+    }
+    
+    public void iniciarTela() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("restrito/principal.xhtml");
     }
     
 }

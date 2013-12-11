@@ -72,7 +72,7 @@ public class TutorController {
 
             atualizarTabela();
 
-            mensagemSucesso("Tutor '" + nomeTutor + "' adicionada com sucesso!");
+            mensagemSucesso("Tutor '" + nomeTutor + "' adicionado com sucesso!");
         } catch (Exception e) {
             mensagemErro(e.getMessage());
         }
@@ -86,7 +86,7 @@ public class TutorController {
 
             atualizarTabela();
 
-            mensagemSucesso("Tutor '" + nomeTutor + "' excluída com sucesso.");
+            mensagemSucesso("Tutor '" + nomeTutor + "' excluído com sucesso.");
         } catch (Exception e) {
             mensagemErro(e.getMessage());
         }
@@ -98,7 +98,7 @@ public class TutorController {
 
             atualizarTabela();
 
-            mensagemSucesso("Tutor alterada com sucesso!");
+            mensagemSucesso("Tutor alterado com sucesso!");
         } catch (Exception e) {
             mensagemErro(e.getMessage());
         }
