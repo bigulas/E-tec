@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./templateRestrito.xhtml">
+
+            <ui:define name="content">
+
+                <div align="center">
+
+                    <h:form id="formCursos" title="Cursos">
+
+                        <!--Todos as Cursos-->
+                        <p:dataTable id="cursos" var="curso" paginator="true" paginatorPosition="bottom" rows="10" 
+                                     resizableColumns="true" emptyMessage="Não ha cursos registrados."
+                                     value="#{cursoController.cursos}" selection="#{cursoController.cursoSelecionado}" 
+                                     selectionMode="single" rowKey="#{curso.id}" sortBy="#{curso.nome}">
+
+                            <!--Evento para quando o item for selecionado-->
+
+                            <f:facet name="header">
+                                Todos as Cursos
+                            </f:facet>
+
+                            <!--Coluna Nome da Curso-->
+
+                            <p:column headerText="ID Curso" sortBy="#{curso.id}" 
+                                      filterBy="#{curso.id}" id="idCurso">
+                                #{curso.id}
+                            </p:column>
+
+
+                            <p:column headerText="Nome Curso" sortBy="#{curso.nome}" 
+                                      filterBy="#{curso.nome}" id="nomeCurso">
+                                #{curso.nome}
+                            </p:column>
+
+
+
+                            <p:column headerText="Ações" style="width: 60px" resizable="false">
+                                <p:commandButton icon="ui-icon-pencil" style="width: 25px; height: 25px"
+                                                 update=":dlgAlterarCurso" oncomplete="alterarCurso.show();" title="Alterar">
+                                    <f:setPropertyActionListener value="#{curso.id}" target="#{cursoController.cursoAlterar.id}"/>
+                                    <f:setPropertyActionListener value="#{curso.nome}" target="#{cursoController.cursoAlterar.nome}"/>
+
+                                </p:commandButton>
+
+                                <p:spacer height="10" width="10"/>
+
+                                <p:commandButton icon="ui-icon-trash" style="width: 25px; height: 25px"
+                                                 title="Excluir" onclick="confirmacao.show();">
+                                    <f:setPropertyActionListener value="#{curso}" target="#{cursoController.cursoSelecionadoEA}"/>
+                                </p:commandButton>
+
+                                <!--Confirmação de exclusão-->
+                                <p:confirmDialog id="cdlgExcluirCurso" message="Tem certeza que deseja excluir esse curso?"
+                                                 header="Excluir Curso" severity="alert" widgetVar="confirmacao"
+                                                 closable="false">
+                                    <p:commandButton value="Sim" update=":formCursos:cursos" onclick="confirmacao.hide();"
+                                                     icon="ui-icon-check" actionListener="#{cursoController.excluirCurso()}" />
+
+                                    <p:commandButton value="Não" onclick="confirmacao.hide();" icon="ui-icon-close"/>
+                                </p:confirmDialog>
+
+                            </p:column>                            
+
+
+                        </p:dataTable>
+
+
+                    </h:form>
+                    <!--Botão Adicinar Curso-->
+                    <h:form id="acoesCurso" title="Acoes">
+                        <p:commandButton value="Adicionar" id="btnAdicionar" onclick="addCurso.show();"/>
+                    </h:form>
+
+                    <!--..................Formulario/Dialog Adicionar Curso........................-->
+                    <p:dialog id="dlgAddCurso" header="Adicionar Curso" closable="false" 
+                              modal="true" resizable="false" widgetVar="addCurso" dynamic="false">                             
+
+                        <h:form id="frmAddCurso">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{cursoController.novoCurso.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Curso" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do curso" />
+                                </p:inputText>
+
+                                <p:commandLink id="btnAdicionar" value="Adicionar" update=":formCursos:cursos,:dlgAddCurso"
+                                               actionListener="#{cursoController.adicionarCurso()}" ajax="false" onsuccess="addCurso.hide();"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="addCurso.hide();"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+
+                    <!--..................Formulario/Dialog Alterar Curso..........................-->
+                    <p:dialog id="dlgAlterarCurso" header="Alterar Curso" closable="false" 
+                              modal="true" resizable="false" widgetVar="alterarCurso" dynamic="false">                             
+
+                        <h:form id="frmAlterarCurso">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{cursoController.cursoAlterar.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Curso" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do curso" />
+                                </p:inputText>
+
+                                <p:commandLink id="btnAlterar2" value="Alterar" ajax="false" immediate="false" 
+                                               update=":formCursos:cursos,:dlgAlterarCurso" onsuccess="alterarCurso.hide()"
+                                               action="#{cursoController.alterarCurso()}" />
+                                <h:commandLink id="btnAlterar" value="Alterar" actionListener="#{cursoController.alterarCurso()}"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="alterarCurso.hide();"/>
+
+                            </h:panelGrid>
+
+                        </h:form>
+                    </p:dialog>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

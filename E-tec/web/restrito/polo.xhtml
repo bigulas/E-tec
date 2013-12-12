@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templateRestrito.xhtml">
+
+            <ui:define name="content">
+
+                <div align="center">
+
+                    <h:form id="formPolos" title="Polos">
+
+                        <!--Todos as Polos-->
+                        <p:dataTable id="polos" var="polo" paginator="true" paginatorPosition="bottom" rows="10" 
+                                     resizableColumns="true" emptyMessage="Não ha polos registrados."
+                                     value="#{poloController.polos}" selection="#{poloController.poloSelecionado}" 
+                                     selectionMode="single" rowKey="#{polo.id}" sortBy="#{polo.nome}">
+
+                            <!--Evento para quando o item for selecionado-->
+
+                            <f:facet name="header">
+                                Todos as Polos
+                            </f:facet>
+
+                            <!--Coluna Nome da Polo-->
+
+                            <p:column headerText="ID Polo" sortBy="#{polo.id}" 
+                                      filterBy="#{polo.id}" id="idPolo">
+                                #{polo.id}
+                            </p:column>
+
+
+                            <p:column headerText="Nome Polo" sortBy="#{polo.nome}" 
+                                      filterBy="#{polo.nome}" id="nomePolo">
+                                #{polo.nome}
+                            </p:column>
+
+                            <p:column headerText="Nome Cidade" sortBy="#{polo.cidade}" 
+                                      filterBy="#{polo.cidade}" id="nomeCidade">
+                                #{polo.cidade}
+                            </p:column>
+
+
+
+                            <p:column headerText="Ações" style="width: 60px" resizable="false">
+                                <p:commandButton icon="ui-icon-pencil" style="width: 25px; height: 25px"
+                                                 update=":dlgAlterarPolo" oncomplete="alterarPolo.show();" title="Alterar">
+                                    <f:setPropertyActionListener value="#{polo.id}" target="#{poloController.poloAlterar.id}"/>
+                                    <f:setPropertyActionListener value="#{polo.nome}" target="#{poloController.poloAlterar.nome}"/>
+                                    <f:setPropertyActionListener value="#{polo.cidade}" target="#{poloController.poloAlterar.cidade}"/>
+
+                                </p:commandButton>
+
+                                <p:spacer height="10" width="10"/>
+
+                                <p:commandButton icon="ui-icon-trash" style="width: 25px; height: 25px"
+                                                 title="Excluir" onclick="confirmacao.show();">
+                                    <f:setPropertyActionListener value="#{polo}" target="#{poloController.poloSelecionadoEA}"/>
+                                </p:commandButton>
+
+                                <!--Confirmação de exclusão-->
+                                <p:confirmDialog id="cdlgExcluirPolo" message="Tem certeza que deseja excluir esse polo?"
+                                                 header="Excluir Polo" severity="alert" widgetVar="confirmacao"
+                                                 closable="false">
+                                    <p:commandButton value="Sim" update=":formPolos:polos" onclick="confirmacao.hide();"
+                                                     icon="ui-icon-check" actionListener="#{poloController.excluirPolo()}" />
+
+                                    <p:commandButton value="Não" onclick="confirmacao.hide();" icon="ui-icon-close"/>
+                                </p:confirmDialog>
+
+                            </p:column>                            
+
+
+                        </p:dataTable>
+
+
+                    </h:form>
+                    <!--Botão Adicinar Polo-->
+                    <h:form id="acoesPolo" title="Acoes">
+                        <p:commandButton value="Adicionar" id="btnAdicionar" onclick="addPolo.show();"/>
+                    </h:form>
+
+                    <!--..................Formulario/Dialog Adicionar Polo........................-->
+                    <p:dialog id="dlgAddPolo" header="Adicionar Polo" closable="false" 
+                              modal="true" resizable="false" widgetVar="addPolo" dynamic="false">                             
+
+                        <h:form id="frmAddPolo">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{poloController.novoPolo.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Polo" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do polo" />
+                                </p:inputText>
+
+                                <h:outputLabel value="Cidade*: " for="txtCidade"/>
+                                <p:inputText value="#{poloController.novoPolo.cidade}" id="txtCidade" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Cidade" requiredMessage="O campo Cidade é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtCidade" value="Digite a Cidade" />
+                                </p:inputText>
+
+                                <p:commandLink id="btnAdicionar" value="Adicionar" update=":formPolos:polos,:dlgAddPolo"
+                                               actionListener="#{poloController.adicionarPolo()}" ajax="false" onsuccess="addPolo.hide();"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="addPolo.hide();"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+
+                    <!--..................Formulario/Dialog Alterar Polo..........................-->
+                    <p:dialog id="dlgAlterarPolo" header="Alterar Polo" closable="false" 
+                              modal="true" resizable="false" widgetVar="alterarPolo" dynamic="false">                             
+
+                        <h:form id="frmAlterarPolo">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{poloController.poloAlterar.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Polo" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do polo" />
+                                </p:inputText>
+
+                                <h:outputLabel value="Cidade*: " for="txtCidade"/>
+                                <p:inputText value="#{poloController.novoPolo.cidade}" id="txtCidade" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Cidade" requiredMessage="O campo Cidade é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtCidade" value="Digite a Cidade" />
+                                </p:inputText>
+
+                                <p:commandLink id="btnAlterar2" value="Alterar" ajax="false" immediate="false" 
+                                               update=":formPolos:polos,:dlgAlterarPolo" onsuccess="alterarPolo.hide()"
+                                               action="#{poloController.alterarPolo()}" />
+                                <h:commandLink id="btnAlterar" value="Alterar" actionListener="#{poloController.alterarPolo()}"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="alterarPolo.hide();"/>
+
+                            </h:panelGrid>
+
+                        </h:form>
+                    </p:dialog>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

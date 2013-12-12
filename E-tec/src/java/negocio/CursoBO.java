@@ -6,6 +6,8 @@ package negocio;
 
 import dataAcess.CursoDAO;
 import domainModel.Curso;
+import domainModel.Curso;
+import java.util.List;
 
 /**
  *
@@ -21,5 +23,20 @@ public class CursoBO {
         }
         cursoDAO.adicionar(curso);
     }
-    
+    public void alterar(Curso curso) {
+
+        //Nem um campo pode ficar vazio
+       if (curso.getNome().trim().length() <= 0) {
+            throw new RuntimeException("O nome não pode ser vazio.");
+        }
+        cursoDAO.alterar(curso);
+    }
+
+    public void excluir(Curso curso) {
+        cursoDAO.excluir(curso);
+    }
+
+    public List<Curso> obterTodos() {
+        return cursoDAO.obterTodos();
+    }
 }

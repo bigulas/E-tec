@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templateRestrito.xhtml">
+
+            <ui:define name="content">
+
+                <div align="center">
+
+                    <h:form id="formTurmas" title="Turma">
+
+                        <!--Todos as Turmas-->
+                        <p:dataTable id="tumas" var="turma" paginator="true" paginatorPosition="bottom" rows="10" 
+                                     resizableColumns="true" emptyMessage="Não ha turmas registrados."
+                                     value="#{turmaController.turma}" selection="#{turmaController.turmaSelecionado}" 
+                                     selectionMode="single" rowKey="#{turmaController.id}" sortBy="#{turmaController.nome}">
+
+                            <!--Evento para quando o item for selecionado-->
+
+                            <f:facet name="header">
+                                Todos as Turmas
+                            </f:facet>
+
+                            <!--Coluna Nome da Turma-->
+                            <p:column headerText="Nome Turma" sortBy="#{turmaController.nome}" 
+                                      filterBy="#{turmaController.nome}" id="nomeTurma">
+                                #{turmaController.nome}
+                            </p:column>
+
+                            
+                            <p:column headerText="Ações" style="width: 60px" resizable="false">
+                                <p:commandButton icon="ui-icon-pencil" style="width: 25px; height: 25px"
+                                                 update=":dlgAlterarTurma" oncomplete="alterarTurma.show();" title="Alterar">
+                                    <f:setPropertyActionListener value="#{turmaController.id}" target="#{turmaController.turmaAlterar.id}"/>
+                                    <f:setPropertyActionListener value="#{turmaController.nome}" target="#{turmaController.turmaAlterar.nome}"/>
+                                    
+                                </p:commandButton>
+
+                                <p:spacer height="10" width="10"/>
+
+                                <p:commandButton icon="ui-icon-trash" style="width: 25px; height: 25px"
+                                                 title="Excluir" onclick="confirmacao.show();">
+                                    <f:setPropertyActionListener value="#{turmaController}" target="#{turmaController.turmaSelecionadoEA}"/>
+                                </p:commandButton>
+
+                                <!--Confirmação de exclusão-->
+                                <p:confirmDialog id="cdlgExcluirTurma" message="Tem certeza que deseja excluir essa turma?"
+                                                 header="Excluir Turma" severity="alert" widgetVar="confirmacao"
+                                                 closable="false">
+                                    <p:commandButton value="Sim" update=":formTurmas:turmas" onclick="confirmacao.hide();"
+                                                     icon="ui-icon-check" actionListener="#{turmasController.excluirTurma()}" />
+
+                                    <p:commandButton value="Não" onclick="confirmacao.hide();" icon="ui-icon-close"/>
+                                </p:confirmDialog>
+
+                            </p:column>                            
+
+
+                        </p:dataTable>
+
+
+                    </h:form>
+                    <!--Botão Adicinar Turma-->
+                    <h:form id="acoesTurma" title="Acoes">
+                        <p:commandButton value="Adicionar" id="btnAdicionar" onclick="addTurma.show();"/>
+                    </h:form>
+
+                    <!--..................Formulario/Dialog Adicionar Turma........................-->
+                    <p:dialog id="dlgAddTurma" header="Adicionar Turma" closable="false" 
+                              modal="true" resizable="false" widgetVar="addTurma" dynamic="false">                             
+
+                        <h:form id="frmAddTurma">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{turmaController.novoTurma.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Turma" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do turma" />
+                                </p:inputText>
+ 
+                                <p:commandLink id="btnAdicionar" value="Adicionar" update=":formTurmases:turmas,:dlgAddTurma"
+                                               actionListener="#{turmaController.adicionarTurma()}" ajax="false" onsuccess="addTurma.hide();"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="addTurma.hide();"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+
+                    <!--..................Formulario/Dialog Alterar Turma..........................-->
+                    <p:dialog id="dlgAlterarTurma" header="Alterar Turma" closable="false" 
+                              modal="true" resizable="false" widgetVar="alterarTurma" dynamic="false">                             
+
+                        <h:form id="frmAlterarTurma">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{turmaController.turmaAlterar.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Turma" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do turma" />
+                                </p:inputText>
+         
+                                <p:commandLink id="btnAlterar" value="Alterar" ajax="false" immediate="false" 
+                                               update=":formTurmases:turmas,:dlgAlterarTurma" onsuccess="alterarTurma.hide()"
+                                               action="#{turmaController.alterarTurma()}" />
+                                <h:commandLink id="btnAlterar" value="Alterar" actionListener="#{turmaController.alterarTurma()}"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="alterarTurma.hide();"/>
+
+                            </h:panelGrid>
+
+                        </h:form>
+                    </p:dialog>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

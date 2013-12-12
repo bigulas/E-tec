@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c551c5d6-12cd-475c-a566-ec5173c0a121">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     TUTOR."ID" AS TUTOR_ID,
+     TUTOR."CELULAR" AS TUTOR_CELULAR,
+     TUTOR."CIDADE" AS TUTOR_CIDADE,
+     TUTOR."CPF" AS TUTOR_CPF,
+     TUTOR."EMAIL" AS TUTOR_EMAIL,
+     TUTOR."ENDERECO" AS TUTOR_ENDERECO,
+     TUTOR."LOGIN" AS TUTOR_LOGIN,
+     TUTOR."NOME" AS TUTOR_NOME,
+     TUTOR."RG" AS TUTOR_RG,
+     TUTOR."SENHA" AS TUTOR_SENHA,
+     TUTOR."TELFIXO" AS TUTOR_TELFIXO
+FROM
+     "ROOT"."TUTOR" TUTOR]]>
+	</queryString>
+	<field name="TUTOR_ID" class="java.lang.Long"/>
+	<field name="TUTOR_NOME" class="java.lang.String"/>
+	<field name="TUTOR_CPF" class="java.lang.String"/>
+	<field name="TUTOR_CELULAR" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="f47a4e1f-d0cf-4f95-b856-669aa0e6d829" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="1b9a8643-6586-4d2a-9682-dce5e04ca4e6" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="2b9ec65c-39c0-4fd7-97ca-ae6f89f4b3da" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement uuid="70f7fca6-eddc-4705-be1f-27c44182bc5b" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="3c919d0b-511b-4c51-b847-e55a491c360c" mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TUTOR_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e97abd03-2c5f-4fb9-859b-026ce89bbd18" mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TUTOR_NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="003f328e-c170-49cb-9378-437468618a7a" mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TUTOR_CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d49bc4eb-ea9b-4c0c-b30f-28c47b89d2ed" mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TUTOR_CELULAR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement uuid="b2a50246-242f-4b9f-b87f-1db792a67658" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="87a42c1a-f402-4e9f-bbe5-72d82c07d7fd" x="0" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TUTOR_ID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="421c0638-ee8f-4ca3-b377-c4116f06a4b7" x="138" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TUTOR_NOME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4f128efb-5cd5-4030-b2f2-52d118122d63" x="276" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TUTOR_CPF}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6ac70651-d5d3-4c2c-b6a8-427f6e7fe0c4" x="414" y="0" width="138" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TUTOR_CELULAR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="362094b0-e8ab-44f1-89c0-03e1fd7463ed" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a1d8ae8a-7bbf-4cdb-9072-d0d2f2ca6999" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="4feed766-d66d-4c26-83f5-35a52aaa92b2" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

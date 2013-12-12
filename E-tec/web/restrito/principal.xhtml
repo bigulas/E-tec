@@ -12,14 +12,16 @@
             <ui:define name="content">
                 <div align="center">
                     <h:form>
-                        <!--<p:commandButton value="Gerenciar Aluno" ajax="false"/>-->
+                        <p:commandButton value="Gerenciar Aluno" ajax="false" action="#{alunoController.iniciarTela()}"/>
                         <p:commandButton value="Gerenciar Tutor" ajax="false" action="#{tutorController.iniciarTela()}"/>
-<!--                        <p:commandButton value="Gerenciar Polo" ajax="false"/><br/>
-                        <p:commandButton value="Gerenciar Curso" ajax="false"/>
+                        <p:commandButton value="Gerenciar Polo" ajax="false" action="#{poloController.iniciarTela()}"/><br/>
+                       <p:commandButton value="Gerenciar Curso" ajax="false" action="#{cursoController.iniciarTela()}"/>
+                        <!--                        
+                        
                         <p:commandButton value="Gerenciar Especialidade " ajax="false"/>
                         <p:commandButton value="Gerenciar Turma" ajax="false"/>
                         -->
-                        
+
                     </h:form>
                 </div>
             </ui:define>

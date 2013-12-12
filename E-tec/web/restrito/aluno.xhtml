@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templateRestrito.xhtml">
+
+            <ui:define name="content">
+
+                <div align="center">
+
+                    <h:form id="formAlunos" title="Alunos">
+
+                        <!--Todos as Alunos-->
+                        <p:dataTable id="alunos" var="aluno" paginator="true" paginatorPosition="bottom" rows="10" 
+                                     resizableColumns="true" emptyMessage="Não há alunos registrados."
+                                     value="#{alunoController.alunos}" selection="#{alunoController.alunoSelecionado}" 
+                                     selectionMode="single" rowKey="#{aluno.id}" sortBy="#{aluno.nome}">
+
+                            <!--Evento para quando o item for selecionado-->
+
+                            <f:facet name="header">
+                                Todos as Alunos
+                            </f:facet>
+
+                            <!--Coluna Nome da Aluno-->
+                            
+                            <p:column headerText="ID Aluno" sortBy="#{aluno.id}" 
+                                      filterBy="#{aluno.id}" id="idAluno">
+                                #{aluno.id}
+                            </p:column>
+                            
+                            <p:column headerText="Nome Aluno" sortBy="#{aluno.nome}" 
+                                      filterBy="#{aluno.nome}" id="nomeAluno">
+                                #{aluno.nome}
+                            </p:column>
+
+                            <p:column headerText="CPF" sortBy="#{aluno.cpf}" 
+                                      filterBy="#{aluno.cpf}" id="cpf">
+                                <h:outputText value="#{aluno.cpf}"/>
+                            </p:column>
+
+                            <p:column headerText="RG" resizable="false" sortBy="#{aluno.rgnumero}" 
+                                      filterBy="#{aluno.rgnumero}" id="turtorRG">
+                                <h:outputText value="#{aluno.rgnumero}"/>
+                            </p:column>                            
+
+                            <p:column headerText="Celular" resizable="false" sortBy="#{aluno.telcelular}" 
+                                      filterBy="#{aluno.telcelular}" id="turtorCelular">
+                                <h:outputText value="#{aluno.telcelular}"/>
+                            </p:column>   
+
+                            <p:column headerText="Telefone Fixo" resizable="false" sortBy="#{aluno.telfixo}" 
+                                      filterBy="#{aluno.telfixo}" id="turtorTelefoneFixo">
+                                <h:outputText value="#{aluno.telfixo}"/>
+                            </p:column>   
+
+                            <p:column headerText="E-Mail" resizable="false" sortBy="#{aluno.email}" 
+                                      filterBy="#{aluno.email}" id="turtorEmail">
+                                <h:outputText value="#{aluno.email}"/>
+                            </p:column> 
+
+                            <p:column headerText="Ações" style="width: 60px" resizable="false">
+                                <p:commandButton icon="ui-icon-pencil" style="width: 25px; height: 25px"
+                                                 update=":dlgAlterarAluno" oncomplete="alterarAluno.show();" title="Alterar">
+                                    <f:setPropertyActionListener value="#{aluno.id}" target="#{alunoController.alunoAlterar.id}"/>
+                                    <f:setPropertyActionListener value="#{aluno.nome}" target="#{alunoController.alunoAlterar.nome}"/>
+                                    <f:setPropertyActionListener value="#{aluno.cpf}" target="#{alunoController.alunoAlterar.cpf}"/>
+                                    <f:setPropertyActionListener value="#{aluno.rgnumero}" target="#{alunoController.alunoAlterar.rgnumero}"/>
+                                    <f:setPropertyActionListener value="#{aluno.telcelular}" target="#{alunoController.alunoAlterar.telcelular}"/>
+                                    <f:setPropertyActionListener value="#{aluno.telfixo}" target="#{alunoController.alunoAlterar.telfixo}"/>
+
+                                </p:commandButton>
+
+                                <p:spacer height="10" width="10"/>
+
+                                <p:commandButton icon="ui-icon-trash" style="width: 25px; height: 25px"
+                                                 title="Excluir" onclick="confirmacao.show();">
+                                    <f:setPropertyActionListener value="#{aluno}" target="#{alunoController.alunoSelecionadoEA}"/>
+                                </p:commandButton>
+
+                                <!--Confirmação de exclusão-->
+                                <p:confirmDialog id="cdlgExcluirAluno" message="Tem certeza que deseja excluir esse aluno?"
+                                                 header="Excluir Aluno" severity="alert" widgetVar="confirmacao"
+                                                 closable="false">
+                                    <p:commandButton value="Sim" update=":formAlunos:alunos" onclick="confirmacao.hide();"
+                                                     icon="ui-icon-check" actionListener="#{alunoController.excluirAluno()}" />
+
+                                    <p:commandButton value="Não" onclick="confirmacao.hide();" icon="ui-icon-close"/>
+                                </p:confirmDialog>
+
+                            </p:column>                            
+
+
+                        </p:dataTable>
+
+
+                    </h:form>
+
+
+                    <!--..................Formulario/Dialog Alterar Aluno..........................-->
+                    <p:dialog id="dlgAlterarAluno" header="Alterar Aluno" closable="false" 
+                              modal="true" resizable="false" widgetVar="alterarAluno" dynamic="false">                             
+
+                        <h:form id="frmAlterarAluno">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nome*: " for="txtNome"/>
+                                <p:inputText value="#{alunoController.novoAluno.nome}" id="txtNome" 
+                                             maxlength="25" required="true" label="nome"
+                                             alt="Nome da Aluno" requiredMessage="O campo Nome é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtNome" value="Digite o nome do aluno" />
+                                </p:inputText>
+
+                                <h:outputLabel value="CPF: " for="txtCPF"/>
+                                <p:inputText value="#{alunoController.novoAluno.cpf}" id="txtCPF" 
+                                             maxlength="12" required="true" label="cpf"
+                                             alt="CPF do Aluno" requiredMessage="O campo CPF é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtCPF" value="Digite o cpf do aluno" />
+                                </p:inputText>
+
+                                <h:outputLabel value="Celular: " for="txtCelular"/>
+                                <p:inputText value="#{alunoController.novoAluno.telcelular}" id="txtCelular" 
+                                             maxlength="12" required="true" label="cpf"
+                                             alt="Celular do Aluno" requiredMessage="O campo Celular é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtCelular" value="Digite o celular do aluno" />
+                                </p:inputText>
+
+                                <h:outputLabel value="TelFixo: " for="txtTelFixo"/>
+                                <p:inputText value="#{alunoController.novoAluno.telfixo}" id="txtTelFixo" 
+                                             maxlength="12" required="true" label="cpf"
+                                             alt="TelFixo do Aluno" requiredMessage="O campo TelFixo é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtTelFixo" value="Digite o TelFixo do aluno" />
+                                </p:inputText>
+
+                                <h:outputLabel for="ensinomedio" value="Ensino Medio: *"/>                        
+                                <p:selectOneMenu id="ensinomedio" value="#{alunoController.novoAluno.encinomedio}">  
+                                    <f:selectItem itemLabel="Publica" itemValue="Publica"/>  
+                                    <f:selectItem itemLabel="Particular" itemValue="Particular" />  
+                                </p:selectOneMenu> 
+
+                                <h:outputLabel for="modalidade" value="Modalidade: *"/>                        
+                                <p:selectOneMenu id="modalidade" value="#{alunoController.novoAluno.modalidade}">  
+                                    <f:selectItem itemLabel="Concomitante" itemValue="Concomitante"/>  
+                                    <f:selectItem itemLabel="Subsequente" itemValue="Subsequente" />  
+                                </p:selectOneMenu>  
+
+                                <h:outputLabel value="Email: " for="txtEmail"/>
+                                <p:inputText value="#{alunoController.novoAluno.email}" id="txtEmail" 
+                                             maxlength="30" required="true" label="cpf"
+                                             alt="Email do Aluno" requiredMessage="O campo Email é de preenchimento obrigatorio." >
+                                    <p:watermark for="txtEmail" value="Digite o Email do aluno" />
+                                </p:inputText>
+
+                                <h:outputLabel for="rgnumero" value="Numero do RG: *" />  
+                                <p:inputText id="rgnumero" value="#{alunoController.novoAluno.rgnumero}" required="true" label="NumeroRG"/>
+
+
+                                <h:outputLabel for="rgexpedidor" value="Orgão Expedidor do RG: *" />  
+                                <p:inputText id="rgexpedidor" value="#{alunoController.novoAluno.rgexpedicao}" required="true" label="ExpedidorRG"/>
+
+                                <h:outputLabel for="dataexpedidor" value="Data de Expedição RG: "/>
+                                <p:calendar id="dataexpedidor" size="10" locale="pt" label="Dataexpedidor" pattern="dd/MM/yyyy" value="#{alunoController.novoAluno.rgdataexpedicao}"  
+                                            title="DataExpedidor" mindate="01/01/1900" showButtonPanel="true" > 
+                                    <p:watermark for="dataexpedidor" value="dd/mm/aaaa" />       
+                                </p:calendar>  
+
+                                <h:outputLabel for="datanascimento" value="Data de Nascimento: *"/>
+                                <p:calendar id="datanascimento" size="10" locale="pt" label="DataNascimento" pattern="dd/MM/yyyy" required="true" value="#{alunoController.novoAluno.datanascimento}"  
+                                            title="DataNascimento" mindate="01/01/1900" showButtonPanel="true" > 
+                                    <p:watermark for="datanascimento" value="dd/mm/aaaa" />       
+                                </p:calendar>
+
+                                <h:outputLabel for="cidadenascimento" value="Cidade de Origem: " />  
+                                <p:inputText id="cidadenascimento" value="#{alunoController.novoAluno.cidadenascimento}"  label="CidaddeNascimento"/>
+
+                                <h:outputLabel for="estadonascimento" value="Estado de Origem: " />  
+                                <p:inputText id="estadonascimento" value="#{alunoController.novoAluno.estadonascimento}"  label="EstadoNascimento"/>
+
+                                <h:outputLabel for="sexo" value="Sexo: *"/>                        
+                                <p:selectOneMenu id="sexo" required="true" value="#{alunoController.novoAluno.sexo}">  
+                                    <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>  
+                                    <f:selectItem itemLabel="Feminino" itemValue="Feminino" />  
+                                </p:selectOneMenu> 
+
+                                <h:outputLabel for="nomepai" value="Nome do Pai: " />  
+                                <p:inputText id="nomepai" value="#{alunoController.novoAluno.nomepai}"  label="NomoPai"/>
+
+                                <h:outputLabel for="nomemae" value="Nome da Mãe: " />  
+                                <p:inputText id="nomemae" value="#{alunoController.novoAluno.nomemae}"  label="NomoMae"/>
+
+                                <h:outputLabel for="estadocivil" value="Estado Civil: " />  
+                                <p:inputText id="estadocivil" value="#{alunoController.novoAluno.estadocivil}"  label="EstadoCivil"/>
+
+                                <h:outputLabel for="titulonumero" value="Numero do Titulo: " />  
+                                <p:inputText id="titulonumero" value="#{alunoController.novoAluno.titulonumero}"  label="Numero do Titulo"/>
+
+
+                                <h:outputLabel for="titulozona" value="Zona do Titulo: " />  
+                                <p:inputText id="titulozona" value="#{alunoController.novoAluno.titulozona}"  label="Zona do Titulo"/>
+
+                                <h:outputLabel for="titulosecao" value="Seção do Titulo: " />  
+                                <p:inputText id="titulosecao" value="#{alunoController.novoAluno.titulosecao}"  label="Seção do Titulo"/>
+
+                                <h:outputLabel for="titulocidade" value="Cidade do Titulo: " />  
+                                <p:inputText id="titulocidade" value="#{alunoController.novoAluno.titulocidade}"  label="Cidade do Titulo"/>
+
+                                <h:outputLabel for="militarnumero" value="Mumero do Certificado Militar: " />  
+                                <p:inputText id="militarnumero" value="#{alunoController.novoAluno.militarnumero}"  label="Numero do Certificado Militar"/>
+
+                                <h:outputLabel for="militaremicao" value="Data de Emicão do Certificado Militar: "/>
+                                <p:calendar id="militaremicao" size="10" locale="pt" label="DataCertificadoMiliitar" pattern="dd/MM/yyyy"  value="#{alunoController.novoAluno.militardataemicao}"  
+                                            title="Data de Emição" mindate="01/01/1900" showButtonPanel="true" > 
+                                    <p:watermark for="militaremicao" value="dd/mm/aaaa" />       
+                                </p:calendar>                     
+
+                                <h:outputLabel for="tipocertidao" value="Tipo da Certidão: "/>                        
+                                <p:selectOneMenu id="tipocertidao"  value="#{alunoController.novoAluno.tipocertidao}">  
+                                    <f:selectItem itemLabel="Casamento" itemValue="Casamento"/>  
+                                    <f:selectItem itemLabel="Nascimento" itemValue="Nascimento" />  
+                                </p:selectOneMenu>
+
+                                <h:outputLabel for="numerocertidao" value="Numero da Certidão: " />  
+                                <p:inputText id="numerocertidao" value="#{alunoController.novoAluno.numcertidao}"  label="numerocaertidao"/>
+
+                                <h:outputLabel for="nomecartorio" value="Nome do Cartorio: " />  
+                                <p:inputText id="nomecartorio" value="#{alunoController.novoAluno.nomecartorio}"  label="NomeCartorio"/>
+
+                                <h:outputLabel for="dataexpedicao" value="Data de Expedição: "/>
+                                <p:calendar id="dataexpedicao" size="10" locale="pt" label="DataExpedicao" pattern="dd/MM/yyyy"  value="#{alunoController.novoAluno.dataexpedicao}"  
+                                            title="DataNascimento" mindate="01/01/1900" showButtonPanel="true" > 
+                                    <p:watermark for="dataexpedicao" value="dd/mm/aaaa" />       
+                                </p:calendar>
+
+                                <h:outputLabel for="folhacertidao" value="Folha da Certidão: " />  
+                                <p:inputText id="folhacertidao" value="#{alunoController.novoAluno.folhacertidao}"  label="FolhaCertidao"/>
+
+                                <h:outputLabel for="livrocertidao" value="Livro da Certidão: " />  
+                                <p:inputText id="livrocertidao" value="#{alunoController.novoAluno.livrocertidao}"  label="LivorCertidao"/>
+
+                                <h:outputLabel for="trabalha" value="Trabalha: "/>                        
+                                <p:selectOneMenu id="trabalha"  value="#{alunoController.novoAluno.trabalha}">  
+                                    <f:selectItem itemLabel="Sim" itemValue="Sim"/>  
+                                    <f:selectItem itemLabel="Não" itemValue="Não"/>  
+                                </p:selectOneMenu>
+
+                                <h:outputLabel for="profissao" value="Profissão: " />  
+                                <p:inputText id="profissao" value="#{alunoController.novoAluno.proficao}"  label="Profissao"/>
+
+                                <h:outputLabel for="qtdpessoas" value="Quantidade de Pessoas na Residencia: " />  
+                                <p:inputText id="qtdpessoas" value="#{alunoController.novoAluno.qtdpessoafamilia}"  label="QtddePessoas"/>
+
+                                <h:outputLabel for="rendafamiliar" value="Renda Familiar: " />  
+                                <p:inputText id="rendafamiliar" value="#{alunoController.novoAluno.rendafamiliar}" label="RendaFamiliar"/>
+
+                                <h:outputLabel for="etinia" value="Etinia: "/>                        
+                                <p:selectOneMenu id="etinia"  value="#{alunoController.novoAluno.etinia}">  
+                                    <f:selectItem itemLabel="Branco" itemValue="Branco"/>  
+                                    <f:selectItem itemLabel="Prado" itemValue="Prado" /> 
+                                    <f:selectItem itemLabel="Amarelo" itemValue="Amarelo" />
+                                    <f:selectItem itemLabel="Negro" itemValue="Negro" />
+                                    <f:selectItem itemLabel="Indigena" itemValue="Indigena" />
+                                </p:selectOneMenu>
+
+                                <h:outputLabel for="nescessidade" value="Possui Nescessidade Especial: "/>                        
+                                <p:selectOneMenu id="nescessidade"  value="#{alunoController.novoAluno.necessidade}">  
+                                    <f:selectItem itemLabel="Sim" itemValue="Sim"/>  
+                                    <f:selectItem itemLabel="Não" itemValue="Não"/>  
+                                </p:selectOneMenu>
+
+                                <h:outputLabel for="nescessidadequal" value="Qual Nescessidade Especial: " />  
+                                <p:inputText id="nescessidadequal" value="#{alunoController.novoAluno.necessidadequal}"  label="NescissidadeQual"/>
+
+                                <h:outputLabel for="formacaoprevia" value="Qual a Sua Formação: "/>                        
+                                <p:selectOneMenu id="formacaoprevia"  value="#{alunoController.novoAluno.formacaoprevia}">  
+                                    <f:selectItem itemLabel="Ensino Médio em Curso" itemValue="Ensino Médio em Curso"/>  
+                                    <f:selectItem itemLabel="Ensino Médio Concluido" itemValue="Ensino Médio Concluido"/> 
+                                    <f:selectItem itemLabel="Superior Incompleto" itemValue="Superior Incompleto"/>
+                                    <f:selectItem itemLabel="Superior Completo" itemValue="Superior Completo"/>
+                                    <f:selectItem itemLabel="Pós Graduado" itemValue="Pós Graduado"/>
+                                </p:selectOneMenu>
+
+                                <h:outputLabel for="nomeinstituicao" value="Nome da Escola: " />  
+                                <p:inputText id="nomeinstituicao" value="#{alunoController.novoAluno.formacaoinstituicao}"  label="Nome Instituicao"/>
+
+
+                                <h:outputLabel for="anoconclusao" value="Ano de Conclusão: " />  
+                                <p:inputText id="anoconclusao" value="#{alunoController.novoAluno.formacaoano}"  label="AnoFormacao"/>
+
+                                <h:outputLabel for="cidadeformacao" value="Cidade em que Concluiu: " />  
+                                <p:inputText id="cidadeformacao" value="#{alunoController.novoAluno.formacaocidade}"  label="NescissidadeQual"/>
+
+                                <p:commandLink id="btnAdicionar" value="Adicionar" update=":formAlunos:alunos,:dlgAddAluno"
+                                               actionListener="#{alunoController.adicionarAluno()}" ajax="false" onsuccess="addAluno.hide();"/>
+
+                                <p:commandLink id="btnAlterar2" value="Alterar" ajax="false" immediate="false" 
+                                               update=":formAlunos:alunos,:dlgAlterarAluno" onsuccess="alterarAluno.hide()"
+                                               action="#{alunoController.alterarAluno()}" />
+                                <h:commandLink id="btnAlterar" value="Alterar" actionListener="#{alunoController.alterarAluno()}"/>
+
+                                <p:commandLink id="btnCancelar" value="Cancelar" type="reset" immediate="true" onclick="alterarAluno.hide();"/>
+
+                            </h:panelGrid>
+
+                        </h:form>
+                    </p:dialog>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

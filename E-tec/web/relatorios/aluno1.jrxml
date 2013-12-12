@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8021ff8-3e25-45b6-b6ef-481e19326720">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     ALUNO."ID" AS ALUNO_ID,
+     ALUNO."CIDADENASCIMENTO" AS ALUNO_CIDADENASCIMENTO,
+     ALUNO."CPF" AS ALUNO_CPF,
+     ALUNO."DATAEXPEDICAO" AS ALUNO_DATAEXPEDICAO,
+     ALUNO."DATANASCIMENTO" AS ALUNO_DATANASCIMENTO,
+     ALUNO."EMAIL" AS ALUNO_EMAIL,
+     ALUNO."ENSINOMEDIO" AS ALUNO_ENSINOMEDIO,
+     ALUNO."ESTADOCIVIL" AS ALUNO_ESTADOCIVIL,
+     ALUNO."ESTADONASCIMENTO" AS ALUNO_ESTADONASCIMENTO,
+     ALUNO."ETINIA" AS ALUNO_ETINIA,
+     ALUNO."FOLHACERTIDAO" AS ALUNO_FOLHACERTIDAO,
+     ALUNO."FORMACAOANO" AS ALUNO_FORMACAOANO,
+     ALUNO."FORMACAOCIDADE" AS ALUNO_FORMACAOCIDADE,
+     ALUNO."FORMACAOINSTITUICAO" AS ALUNO_FORMACAOINSTITUICAO,
+     ALUNO."FORMACAOPREVIA" AS ALUNO_FORMACAOPREVIA,
+     ALUNO."LIVROCERTIDAO" AS ALUNO_LIVROCERTIDAO,
+     ALUNO."MILITARDATAEMICAO" AS ALUNO_MILITARDATAEMICAO,
+     ALUNO."MILITARNUMERO" AS ALUNO_MILITARNUMERO,
+     ALUNO."MODALIDADE" AS ALUNO_MODALIDADE,
+     ALUNO."NECESSIDADE" AS ALUNO_NECESSIDADE,
+     ALUNO."NECESSIDADEQUAL" AS ALUNO_NECESSIDADEQUAL,
+     ALUNO."NOME" AS ALUNO_NOME,
+     ALUNO."NOMECARTORIO" AS ALUNO_NOMECARTORIO,
+     ALUNO."NOMEMAE" AS ALUNO_NOMEMAE,
+     ALUNO."NOMEPAI" AS ALUNO_NOMEPAI,
+     ALUNO."NUMATRICULA" AS ALUNO_NUMATRICULA,
+     ALUNO."NUMCERTIDAO" AS ALUNO_NUMCERTIDAO,
+     ALUNO."PROFISSAO" AS ALUNO_PROFISSAO,
+     ALUNO."QTDPESSOAFAMILIA" AS ALUNO_QTDPESSOAFAMILIA,
+     ALUNO."RENDAFAMILIAR" AS ALUNO_RENDAFAMILIAR,
+     ALUNO."RGDATAEXPEDICAO" AS ALUNO_RGDATAEXPEDICAO,
+     ALUNO."RGEXPEDICAO" AS ALUNO_RGEXPEDICAO,
+     ALUNO."RGNUMERO" AS ALUNO_RGNUMERO,
+     ALUNO."SEXO" AS ALUNO_SEXO,
+     ALUNO."TELCELULAR" AS ALUNO_TELCELULAR,
+     ALUNO."TELFIXO" AS ALUNO_TELFIXO,
+     ALUNO."TIPOCERTIDAO" AS ALUNO_TIPOCERTIDAO,
+     ALUNO."TITULOCIDADE" AS ALUNO_TITULOCIDADE,
+     ALUNO."TITULONUMERO" AS ALUNO_TITULONUMERO,
+     ALUNO."TITULOSECAO" AS ALUNO_TITULOSECAO,
+     ALUNO."TITULOZONA" AS ALUNO_TITULOZONA,
+     ALUNO."TRABALHA" AS ALUNO_TRABALHA,
+     ALUNO."ENDERECO_ID" AS ALUNO_ENDERECO_ID
+FROM
+     "ROOT"."ALUNO" ALUNO]]>
+	</queryString>
+	<field name="ALUNO_ID" class="java.lang.Long"/>
+	<field name="ALUNO_CPF" class="java.lang.String"/>
+	<field name="ALUNO_MODALIDADE" class="java.lang.String"/>
+	<field name="ALUNO_NOME" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="b8cbfeca-5d69-4e59-8355-2be52765f71c" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="6cec82c7-22d5-4461-977c-6954a2b843ba" x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Alunos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8662440e-169e-4080-aedc-c72171cfb5cc" x="395" y="43" width="180" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40">
+			<line>
+				<reportElement uuid="b0d99dcb-8e95-489d-99a3-691a22b6818b" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e718c05d-964f-4ba4-93fb-eb799060b6cf" mode="Opaque" x="-20" y="-1" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c89f239-d44d-48e1-b50a-2a84208e2117" mode="Opaque" x="254" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3f6fcb4d-1e63-4be2-aebc-bdf757567bdf" mode="Opaque" x="392" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODALIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d30f4487-5705-4209-b61c-45f8987170e5" mode="Opaque" x="116" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1c3b1104-1ae7-482c-81c3-8c76c377f30e" x="271" y="20" width="121" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALUNO_CPF}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4013a2e4-c610-45d7-b9cf-660d0ce3b0a9" x="100" y="19" width="138" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALUNO_NOME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4c127b1e-36d4-4ab6-95e0-29663c1a9721" x="417" y="19" width="98" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALUNO_MODALIDADE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="43561e1d-7583-4720-94dd-882a0c5233a2" x="0" y="19" width="85" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALUNO_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42">
+			<line>
+				<reportElement uuid="ad5bd72b-76cb-4a81-b3f8-0a6e5664b31a" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="b858b29c-8f08-45f1-a245-18385a306141" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="6d9898fa-b40b-4c03-910b-55d71496c0fa" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="dff1a906-6caa-4b40-bf65-e0c2d08ad886" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[E-tec]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
